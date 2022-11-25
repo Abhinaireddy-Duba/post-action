@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		function save(){
+			var input=document.getElementById("input")
+			console.log("input") 
+
+
+		fetch("http://localhost:2002/newData",{
+			method:"POST",
+			headers:{
+			
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:"abhi",age:20})
+		})
+	}
+	</script>
+	<div>
+	<input id="input" type="text" placeholder="enter name">
+	<ul>
+
+	</ul>
+	<button onclick="save()">submit</button>
+
+	</div>
+
+</body>
+</html>
