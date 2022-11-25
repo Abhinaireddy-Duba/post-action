@@ -4,12 +4,78 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
+	<style type="text/css">
+		body{
+			background-image: url("https://img.freepik.com/free-vector/gradient-background-vector-spring-colors_53876-117271.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		.sec{
+			margin-top:15% ;
+			margin-left: 40%;
+		}
+		#page{
+			color: blue;
+			font-size: 2rem;
+		}
+		#input{
+			background-color:orange ;
+			color: black;
+			padding: 1%;
+			border-radius: 1rem;
+			border: 1px solid black;
+			font-size: 1rem;
+		}
+		#pass{
+			background-color:orange ;
+			color: black;
+			padding: 1%;
+			border-radius: 1rem;
+			border: 1px solid black;
+			font-size: 1rem;
+		}
+		.button1{
+			
+			background-color:orange ;
+			color: black;
+			padding: 1%;
+			border-radius: 1rem;
+			border: 1px solid black;
+
+		}
+		.button1:hover{
+			background-color: blue;
+			color: white;
+		}
+		#select{
+			background-color: violet ;
+			color: blue;
+			padding: 1%;
+			border-radius: 1rem;
+			border: 1px solid black;
+
+		}
+		.gender{
+
+		}
+	</style>
 </head>
 <body>
 	<script type="text/javascript">
 		function save(){
-			var input=document.getElementById("input")
-			console.log("input") 
+			var input=document.getElementById("input").value
+			var pass=document.getElementById("pass").value
+			var select=document.getElementById("select").value
+			var gmale=document.getElementById("gmale").checked
+			var gfemale=document.getElementById("gfemale").checked
+			console.log(pass)
+
+			console.log(input)
+			console.log(select)
+			console.log(gmale,gfemale)
+			if(gmale==true) var gender="male"
+				else var gender="female"
+
 
 
 		fetch("http://localhost:2002/newData",{
@@ -18,18 +84,38 @@
 			
 				"Content-Type":"application/json"
 			},
-			body:JSON.stringify({name:"abhi",age:20})
+			body:JSON.stringify({name:input,password:pass,course:select,gender:gender})
 		})
+	.catch((err)=>{
+		alert(err)
+	})
+
 	}
 	</script>
+	<section class="sec">
 	<div>
-	<input id="input" type="text" placeholder="enter name">
+		<h1 id="page">Registration Page</h1>
+	<p><input id="input" type="text" placeholder="enter name"></p>
+	<p><input id="pass" type="text" placeholder="password"></p>
+	<select id="select">
+		<option>select course</option>
+		<option>MPCS</option>
+		<option>MSCS</option>
+		<option>MSDS</option>
+		<option>MPC</option>
+	</select>
+	<p>
+		<input id="gmale" type="radio" name="gender">Male
+		<input id="gfemale" type="radio" name="gender">Female
+	</p>
+
 	<ul>
 
 	</ul>
-	<button onclick="save()">submit</button>
+	<button class="button1" onclick="save()">submit</button>
 
 	</div>
+</section>
 
 </body>
 </html>

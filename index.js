@@ -6,10 +6,10 @@ const bodyParser=require("body-parser")
 
 app.use(bodyParser.urlencoded({
 	extended:true
-
-
-
 }))
+
+
+
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -22,7 +22,7 @@ app.get("/",(req,res)=>{
 })
 app.post("/newData",(req,res)=>{
 	console.log(req.body)
-	/*const {name,age}=req.body
-	console.log(name,age,"values")*/
+	const {name,password,course,gender}=req.body
+	console.log(name,password,course,gender,"are the values")
 })
 app.listen(port)
